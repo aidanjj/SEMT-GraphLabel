@@ -1,7 +1,7 @@
 # SEMT-GraphLabel
-A brute-force approach to finding SEMT graph labelings. 
 
 ## Basic usage:
+To use this class, you create a 2-D dynamic array where the ith row and jth column corresponds to the edge that connects the ith vertex to the jth vertex.<br>
 Here is an example usage for the graph <i>C<sub>5</sub></i>.
 ```AGS Script
 #include "GraphLabel.hpp"
@@ -71,5 +71,19 @@ Output:
 While the GraphLabel class can automatically determine the magic constant, this implementation requires iterating through an array with a size equal to the number of vertices.<br>
 By creating your own magic constant function, you eliminate the need for iterating through an array, thus speeding up the program.<br>
 To do this, use `GraphLabel::setConstant(double (*inConstant)(int*))`, where inConstant is your function that takes in a dynamic array of vertices.
-Here is an example for <i>B<sub>4</sub></i>, where C = <sup>2</sup>&frasl;<sub>9</sub>(v<sub>1</sub> + v<sub>2</sub>)+484:
+Here is an example for <i>B<sub>5</sub></i>, where C = <sup>2</sup>&frasl;<sub>9</sub>(v<sub>1</sub> + v<sub>2</sub>)+484:
+```AGS Script
+double constantFunction(int* v){
+    return (2.0/9) * (v[0]+v[1]) + 484; // The way the graph was defined, v[0] and v[1] correspond to v_1 and v_2.
+}
+
+int main(){
+    int** graph;
+    createBook5(graph);
+    GraphLabel g(5);
+    g.setGraph(graph);
+    g.setConstant(constantFunction);
+    g.start();
+}
+```
 
