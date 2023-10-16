@@ -66,6 +66,21 @@ Output:
 {3,2,4,1,5}, C: 13
 {3,2,5,1,4}, C: 13
 ```
+## Random permutations
+For graphs with large amounts of vertices, it may be better to use random permutations, as the solutions tend to be bunched together when using deterministic permutations.<br>
+To do this, use `GraphLabel::setRandom(bool)`. Here is an example:
+```AGS Script
+int main(){
+    int** graph;
+    create4Cycle(graph);
+    
+    GraphLabel g(5);
+    g.setGraph(graph);
+    g.setRandom(true);
+    g.start();
+}
+```
+Note that this enters an infinite loop in this current implementation.
 
 ## Creating your own magic constant function
 While the GraphLabel class can automatically determine the magic constant, this implementation requires iterating through an array with a size equal to the number of vertices.<br>
