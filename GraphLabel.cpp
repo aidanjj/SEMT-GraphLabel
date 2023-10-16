@@ -22,9 +22,12 @@ GraphLabel::GraphLabel(int inVertexCount){
 }
 
 void GraphLabel::fix(int index, int value){
-    isFixed = true;
     freeVertexCount -= 1;
+    if (isFixed){
+        delete[] freeVertexList;
+    }
     freeVertexList = new int[freeVertexCount];
+    isFixed = true;
     fixedValues[vertexCount - freeVertexCount - 1] = value;
     fixedIndexes[vertexCount - freeVertexCount - 1] = index;
     int count = 0;
