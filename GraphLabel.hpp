@@ -11,7 +11,7 @@
 
 class GraphLabel{
 private:
-    bool isConstantSet = false; bool isGraphSet = false;
+    bool isConstantSet = false; bool isGraphSet = false; bool isRandom = false;
     
     int vertexCount = 0;
     
@@ -33,6 +33,8 @@ private:
     
     void findVerticeWeights();
     
+    int uniform(int n);
+    
     int loadingInterval = 1E8;
     
     double (*constant)(int*);
@@ -53,6 +55,8 @@ public:
     virtual ~GraphLabel() = default;
     
     bool isSemt();
+    
+    void setRandom(bool inRandom);
     
     void setConstant(double (*inConstant)(int*));
     

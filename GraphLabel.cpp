@@ -199,20 +199,41 @@ void GraphLabel::printSolution(){
     std::cout << "}, C: " << getConstant() << std::endl;
 }
 
+void GraphLabel::setRandom(bool inRandom){
+    isRandom = inRandom;
+}
+
+int GraphLabel::uniform(int n){
+    return rand() % n;
+}
+
 void GraphLabel::permuteVertices(int n){
-    if (n == 1){
-        if (isSemt()){
-            printSolution();
+    if (isRandom == false){
+        if (n == 1){
+            if (isSemt()){
+                printSolution();
+            }
+        }
+        else {
+            for (int i = 0; i < n; ++i){
+                permuteVertices(n-1);
+                if (n % 2 == 0){
+                    swap(n-1,i);
+                }
+                else {
+                    swap(0,n-1);
+                }
+            }
         }
     }
     else {
-        for (int i = 0; i < n; ++i){
-            permuteVertices(n-1);
-            if (n % 2 == 0){
-                swap(n-1,i);
-            }
-            else {
-                swap(0,n-1);
+        while (true){
+        for (int i = 0; i <= freeVertexCount-2; i++) {
+            int j = i+uniform(n-i);
+            swap(i, j);
+        }
+            if (isSemt()){
+                printSolution();
             }
         }
     }
