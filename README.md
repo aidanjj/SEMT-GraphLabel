@@ -95,7 +95,7 @@ double constantFunction(int* v){
 int main(){
     int** graph;
     createBook5(graph);
-    GraphLabel g(5);
+    GraphLabel g(12);
     g.setGraph(graph);
     g.setConstant(constantFunction);
     g.start();
