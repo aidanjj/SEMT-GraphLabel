@@ -52,7 +52,7 @@ Here is an example of fixing vertices 1 and 2 to the values 3 and 2, respectivel
 ```AGS Script
 int main(){
     int** graph;
-    create4Cycle(graph); // Designated graph initialization to another function.
+    create5Cycle(graph); // Designated graph initialization to another function.
     
     GraphLabel g(5);
     g.setGraph(graph);
