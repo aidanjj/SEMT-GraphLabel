@@ -72,7 +72,7 @@ To do this, use `GraphLabel::setRandom(bool)`. Here is an example:
 ```AGS Script
 int main(){
     int** graph;
-    create4Cycle(graph);
+    create5Cycle(graph);
     
     GraphLabel g(5);
     g.setGraph(graph);
